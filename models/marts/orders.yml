@@ -97,6 +97,11 @@ semantic_models:
         type: time
         type_params:
           time_granularity: day
+      - name: order year
+        expr: order_year
+        type: time
+        type_params:
+          time_granularity: year
       - name: order_total_dim
         type: categorical
         expr: order_total
@@ -165,6 +170,16 @@ metrics:
       measure: order_count
     filter: |
       {{ Dimension('order_id__is_drink_order') }} = true
+  - name: current_year_order_total
+    description: Sum of total order amonunt. Includes tax + revenue.
+    type: simple
+    label: Current Year Order Total
+    type: simple
+    type_params:
+        measure: order_total
+    filter: |
+      {{ Dimension('order_year') }} = 2023
+
 
 saved_queries:
   - name: order_metrics
