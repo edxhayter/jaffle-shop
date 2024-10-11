@@ -97,7 +97,7 @@ semantic_models:
         type: time
         type_params:
           time_granularity: day
-      - name: order year
+      - name: order_year
         expr: order_year
         type: time
         type_params:
@@ -172,7 +172,6 @@ metrics:
       {{ Dimension('order_id__is_drink_order') }} = true
   - name: current_year_order_total
     description: Sum of total order amonunt. Includes tax + revenue.
-    type: simple
     label: Current Year Order Total
     type: simple
     type_params:
